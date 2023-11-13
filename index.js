@@ -1,11 +1,15 @@
 const express = require("express");
+const morgan = require("morgan")//Este paquete permite usar Middlewares ya creados .(Reutilizar)
+
 const app = express();
 
-app.use((req,res,next) =>{
-    console.log(`Ruta: ${req.url} y metodo: ${req.method}`);  
+app.use(morgan("dev"))
+
+// app.use((req,res,next) =>{
+//     console.log(`Ruta: ${req.url} y metodo: ${req.method}`);  
     
-    next()
-})
+//     next()
+// })
 app.get("/profile", (req,res) => {
     res.send("profile page")
 })
